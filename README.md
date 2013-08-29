@@ -1,45 +1,39 @@
 [![Build Status](https://secure.travis-ci.org/invadersmustdie/Kibana.png?branch=kibana-ruby)](https://travis-ci.org/invadersmustdie/Kibana)
 
 # Kibana
-__NOTE__: You have reached the repository for Kibana 2, the ruby version of Kibana. Kibana 3 can be found at [https://github.com/elasticsearch/kibana](https://github.com/elasticsearch/kibana)
-
 Copyright 2012 Rashid Khan <rashidkpc #logstash irc.freenode.net>
+
+http://www.kibana.org
 
 Kibana is a browser based interface for Logstash and ElasticSearch that allows 
 you to efficiently search, visualize, analyze and otherwise make sense of your 
 logs. 
 
-More information at [http://www.kibana.org](http://www.kibana.org)
-
 ## Requirements
 
-__Base__
+ruby >= 1.8.7 (probably?)  
+bundler  
+logstash >= 1.1.0  
+elasticsearch >= 0.18.0  
 
-* ruby >= 1.8.7 (probably?)  
-* bundler  
-* logstash >= 1.1.0  
-* elasticsearch >= 0.18.0  
-
-__JRuby__
-
-* java >= 1.6
-* warbler if you want to create an executable standalone war file
+java >= 1.6 if you want to run Kibana in JRuby	
+warbler if you want to create an executable standalone war file  
 
 ## Installation
-__Install__  
-1. git clone --branch=kibana-ruby https://github.com/rashidkpc/Kibana.git	
-2. cd Kibana  
-3. gem install bundler  
-4. bundle install  
+Install:  
+  git clone --branch=kibana-ruby https://github.com/rashidkpc/Kibana.git	
+  cd Kibana  
+	gem install bundler  
+	bundle install  
 
-__Configure__  
+Configure:  
 Set your elasticsearch server in KibanaConfig.rb:  
-	`Elasticsearch = "elasticsearch:9200"`
+	Elasticsearch = "elasticsearch:9200"  
 
-__Run__  
-`ruby kibana.rb`  
+Run:  
+	ruby kibana.rb  
 
-__Use__  
+Use:  
   Point your browser at http://localhost:5601
 
 ## JRuby
@@ -62,7 +56,7 @@ if you want to include a webserver (default: jetty).
 Run:	
 `	java [-Djetty.port=5601] -jar Kibana.war`
 
-_Todo_: Externalize the configuration. Any help would be appreciated.  
+Todo: Externalize the configuration. Any help would be appreciated.  
 
 ## FAQ
 Q: Why is there no last button?  
@@ -73,7 +67,7 @@ Q: Why is this Ruby instead of PHP now?
 A: Closer integration with logstash, Ruby is shiny. Its mostly javascript 
 anyway. If you want it in something else, it shouldn't be too hard to port.  
 
-Q: Why do I have to set a limit on events to analyze?  
+Q: Why do I have to set a limit on events to analyze?
 A: Big result sets take a long time to retrieve from elasticsearch and parse out  
 
 Q: Well then why don't you use the Elastic Search terms facet?  

@@ -9,11 +9,11 @@ module KibanaConfig
   ElasticsearchTimeout = 500
 
   # The port Kibana should listen on
-  KibanaPort = 5601
+  KibanaPort = 1109
 
   # The adress ip Kibana should listen on. Comment out or set to
   # 0.0.0.0 to listen on all interfaces.
-  KibanaHost = '127.0.0.1'
+  KibanaHost = '0.0.0.0'
   
   # Below is an example showing how to configure the same variables
   # using environment variables, which can be set in an init script
@@ -30,13 +30,13 @@ module KibanaConfig
   Type = ''
 
   # Results to show per page
-  Per_page = 50
+  Per_page = 200
 
   # Timezone. Leave this set to 'user' to have the user's browser autocorrect.
   # Otherwise, set a timezone string
   # Examples: 'UTC', 'America/Phoenix', 'Europe/Athens', MST
   # You can use `date +%Z` on linux to get your timezone string
-  Timezone = 'user'
+  Timezone = 'UTC'
 
   # Format for timestamps. Defaults to mm/dd HH:MM:ss.
   # For syntax see: http://blog.stevenlevithan.com/archives/date-time-format
@@ -45,11 +45,11 @@ module KibanaConfig
   # article, as timezone correction is already performed by the "Timezone"
   # config variable.
   # Time_format = 'isoDateTime' 
-  Time_format = 'mm/dd HH:MM:ss'
+  Time_format = 'mm/dd HH:MM:ss.l'
 
   # Change which fields are shown by default. Must be set as an array
   # Default_fields = ['@fields.vhost','@fields.response','@fields.request']
-  Default_fields = ['@message']
+  Default_fields = ['levelname', 'skin', '@source_host', 'server', '@message']
 
   # If set to true, Kibana will use the Highlight feature of Elasticsearch to 
   # display highlighted search results
@@ -68,11 +68,11 @@ module KibanaConfig
   # Hungary is translated to capital OR of OR Hungary, and with default
   # operator of AND, the same query is translated to capital AND of AND
   # Hungary. The default value is OR.
-  Default_operator = 'OR'
+  Default_operator = 'AND'
 
   # When using analyze, use this many of the most recent
   # results for user's query
-  Analyze_limit = 2000
+  Analyze_limit = 10000
 
   # Show this many results in analyze/trend/terms/stats modes
   Analyze_show = 25
@@ -134,7 +134,7 @@ module KibanaConfig
   # field called _all that is searched when no field is specified.
   # Dropping _all can reduce index size significantly. If you do that
   # you'll need to change primary_field to be '@message'
-  Primary_field = '_all'
+  Primary_field = '@message'
 
   # Default Elastic Search index to query
   Default_index = '_all'
