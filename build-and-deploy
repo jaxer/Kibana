@@ -1,8 +1,8 @@
 jruby -S warble executable war
 
 echo "===> Deploying"
-rsync -v --rsh "ssh ent.nordicgaming.com ssh" Kibana.war bc4-bl15:~/
+rsync -v --rsh "ssh ent.nordicgaming.com ssh" Kibana.war bc2-bl10:/home/exoweb/kibana
 
 echo "===> Restarting"
-ssh ent.nordicgaming.com "ssh bc4-bl15 ~/restart"
+ssh ent.nordicgaming.com "ssh bc2-bl10 /home/exoweb/kibana/restart"
 echo DONE.

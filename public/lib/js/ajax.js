@@ -997,7 +997,15 @@ function details_table(objid, theme) {
                     return "@KIBANA_LINK_START@" + text + "@KIBANA_LINK_END@";
                 }
             );
+
             var value = xmlEnt(wbr(value), 10);
+
+            if(/stack$/.test(index)) {
+                value = value.replace(/(Frame.*?<br\/>)/g, '<div style="color: black; margin-top: 15px;">$1</div>');
+                value = value.replace(/(.*?) = (.*?(<br\/>|$))/g, '<span style="color: darkgreen">$1</span> = <span style="color: darkgray;">$2</span>');
+                value = '<span style="line-height: 10px; letter-spacing: -0.5px; font-size: 12px; font-family: \'Lucida Console\', Monaco, monospace">' + value + '</span>';
+            }
+
             // Replace delimiters by HTML code
             var value = value.replace(RegExp("@KIBANA_LINK_START@(.*?)@KIBANA_LINK_END@", "g"),
                 function (all, text) {
