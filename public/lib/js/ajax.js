@@ -1814,4 +1814,23 @@ function bind_clicks() {
         unhighlight_all_events();
     });
 
+    $(document).keydown(function(e) {
+        var event = e || window.event;
+        var nodeName = event.target.nodeName;
+
+        if ('INPUT' == nodeName || 'TEXTAREA' == nodeName) {
+            return;
+        }
+
+        if((event.which >= 'a'.charCodeAt(0)) && (event.which <= 'z'.charCodeAt(0)) ||
+            (event.which >= 'A'.charCodeAt(0)) && (event.which <= 'Z'.charCodeAt(0)) ||
+            (event.which == ' '.charCodeAt(0))) {
+            var $i = $('#queryinput');
+            var v = $i.val().replace(/\s+$/g, '');
+            if(v != '') {
+                v = v + ' ';
+            }
+            $i.val(v).trigger('focus');
+        }
+    })
 }
