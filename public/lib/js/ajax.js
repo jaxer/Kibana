@@ -1822,9 +1822,15 @@ function bind_clicks() {
             return;
         }
 
-        if((event.which >= 'a'.charCodeAt(0)) && (event.which <= 'z'.charCodeAt(0)) ||
-            (event.which >= 'A'.charCodeAt(0)) && (event.which <= 'Z'.charCodeAt(0)) ||
-            (event.which == ' '.charCodeAt(0))) {
+        // [a-zA-Z0-9\-\+] and without any modifiers
+        if((
+            ((event.which >= '0'.charCodeAt(0)) && (event.which <= '9'.charCodeAt(0))) ||
+            ((event.which >= 'a'.charCodeAt(0)) && (event.which <= 'z'.charCodeAt(0))) ||
+            ((event.which >= 'A'.charCodeAt(0)) && (event.which <= 'Z'.charCodeAt(0))) ||
+            (event.which == ' '.charCodeAt(0)) || (event.which == '-'.charCodeAt(0)) || (event.which == '+'.charCodeAt(0))
+           ) &&
+           !(event.shiftKey || event.ctrlKey || event.altKey || event.metaKey)
+          ) {
             var $i = $('#queryinput');
             var v = $i.val().replace(/\s+$/g, '');
             if(v != '') {
