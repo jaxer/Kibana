@@ -275,6 +275,7 @@ table.logs tr.logrow:hover, td.logfield:hover, td.logfield_selected {
 
 table.logdetails {
   margin-left: 10px;
+  width: 1000px;
 }
 
 tr.logrow:hover {
