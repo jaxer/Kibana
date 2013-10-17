@@ -884,6 +884,7 @@ function CreateLogTable(objArray, fields, theme, enableHeader) {
             }
 
             var value = value === undefined ? "-" : value.toString();
+            var orig_value = value;
             var value = xmlEnt(wbr(value), 10);
             var value = value.replace(RegExp("@KIBANA_HIGHLIGHT_START@(.*?)@KIBANA_HIGHLIGHT_END@", "g"),
                 function (all, text, char) {
@@ -893,7 +894,15 @@ function CreateLogTable(objArray, fields, theme, enableHeader) {
             if (field == "levelname" && !(value == 'INFO' || value == 'DEBUG')) {
                 value = "<b>" + value + "</b>";
             }
-            str += '<td class="column" data-field="' + field + '">' +
+
+            var cls = "";
+
+            if (field == "@message" && /SQL/.test(value)) {
+                value = hljs.highlight("sql", orig_value, true).value;
+                cls = " highlighted"
+            }
+
+            str += '<td class="column'+cls+'" data-field="' + field + '">' +
                 value + '</td>';
         }
         str += '</tr><tr class="hidedetails"></tr>';

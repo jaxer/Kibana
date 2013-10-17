@@ -1,0 +1,50 @@
+﻿/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+
+*/
+
+.highlighted code {
+  display: block; padding: 0.5em;
+  background: white; color: black;
+}
+
+.highlighted .string,
+.highlighted .tag .value,
+.highlighted .filter .argument,
+.highlighted .addition,
+.highlighted .change,
+.highlighted .apache .tag,
+.highlighted .apache .cbracket,
+.highlighted .nginx .built_in,
+.highlighted .tex .formula {
+  color: #888;
+}
+
+.highlighted .comment,
+.highlighted .template_comment,
+.highlighted .shebang,
+.highlighted .doctype,
+.highlighted .pi,
+.highlighted .javadoc,
+.highlighted .deletion,
+.highlighted .apache .sqbracket {
+  color: #CCC;
+}
+
+.highlighted .keyword,
+.highlighted .tag .title,
+.highlighted .ini .title,
+.highlighted .lisp .title,
+.highlighted .clojure .title,
+.highlighted .http .title,
+.highlighted .nginx .title,
+.highlighted .css .tag,
+.highlighted .winutils,
+.highlighted .flow,
+.highlighted .apache .tag,
+.highlighted .tex .command,
+.highlighted .request,
+.highlighted .status {
+  font-weight: bold;
+}
